@@ -37,7 +37,7 @@ namespace :dump do
     output = nil
     on primary(:db) do
       within current_path do
-        with({ rails_env: fetch_rails_env, progress_tty: '+' }.merge(env)) do
+        with({ rails_env: fetch(:rails_env), progress_tty: '+' }.merge(env)) do
           output = capture(:rake, "dump:#{rake_task}")
         end
       end
